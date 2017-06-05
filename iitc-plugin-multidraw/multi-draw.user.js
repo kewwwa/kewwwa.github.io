@@ -4,8 +4,8 @@
 // @category       Layer
 // @version        0.1.20170605.91121
 // @namespace      https://github.com/kewwwa/iitc-plugin-multidraw
-// @updateURL      https://github.com/kewwwa/kewwwa.github.io/iitc-plugin-multidraw/multi-draw.meta.js
-// @downloadURL    https://github.com/kewwwa/kewwwa.github.io/iitc-plugin-multidraw/multi-draw.user.js
+// @updateURL      https://kewwwa.github.io/iitc-plugin-multidraw/multi-draw.meta.js
+// @downloadURL    https://kewwwa.github.io/iitc-plugin-multidraw/multi-draw.user.js
 // @description    [local-2017-06-05-091121] Draw multiple links
 // @include        https://*.ingress.com/intel*
 // @include        http://*.ingress.com/intel*
