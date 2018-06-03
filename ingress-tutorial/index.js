@@ -1,36 +1,97 @@
-(function (window, document) {
+(function (window, document, $) {
     var container,
-        searchInput;
+        itemList = new Map(),
+        searchInput,
+        searchInputDelay = 500,
+        searchInputTimeout;
 
     init();
 
     function init() {
-        container = jQuery('#accordionExample');
+        container = $('#accordionExample');
         container.find('[data-toggle=\'collapse\']')
-            .on('click', collapseLinkClick);
+            .each(initCollapseLink);
 
-        searchInput = jQuery('#searchInput');
-        searchInput.on('focus', searchInputFocus);
+        searchInput = $('#searchInput');
+        searchInput.on('keyup', searchInputKeyUp);
 
-        var hash = window.location.hash;
+        showMatchingHash();
+    }
+
+    function showMatchingHash() {
+        var hash = window.location.hash,
+            item;
+
         if (hash) {
-            var active = container.find(hash);
-            if (active.length > 0) {
-                var toggle = active.find('[data-toggle=\'collapse\']');
-                var collapse = container.find(toggle.data('target'));
-                collapse.collapse('show');
+            item = itemList.get(hash.substr(1));
+            if (item) {
+                item.content.collapse('show');
             }
         }
     }
 
-    function collapseLinkClick() {
-        var target = $(this).data('target');
-        var collapse = container.find(target);
-        var label = collapse.attr('aria-labelledby');
-        history.replaceState({}, label, '#' + label);
+    function initCollapseLink() {
+        var collapse = $(this),
+            parent = $(collapse.parentsUntil(container).last()),
+            id = $(collapse.parents('.card-header').first()).attr('id'),
+            content = container.find(collapse.data('target'));
+
+        collapse.on('click', collapseLinkClick);
+
+        var item = {
+            id: id,
+            collapse: collapse,
+            content: content,
+            parent: parent,
+            text: collapse.text().trim().toLowerCase(),
+        };
+
+        itemList.set(id, item);
     }
 
-    function searchInputFocus() {
-        alert('Nan ça marche pas encore... :p');
+    function collapseLinkClick() {
+        var entries = itemList.entries(),
+            entry,
+            item,
+            key,
+            match;
+
+        while (!match && !(entry = entries.next()).done) {
+            [key, item] = entry.value;
+            match = item.collapse.is(this);
+        }
+
+        if (match) {
+            history.replaceState({}, key, '#' + key);
+        }
+    }
+
+    function searchInputKeyUp(event) {
+        if (searchInputTimeout) {
+            clearTimeout(searchInputTimeout);
+        }
+
+        if (event.keyCode === 13) {
+            searchTerm();
+        } else {
+            searchInputTimeout = setTimeout(searchTerm, searchInputDelay);
+        }
+    }
+
+    function searchTerm() {
+        var term = searchInput.val().trim().toLowerCase(),
+            item,
+            match,
+            count = 0;
+
+        for (item of itemList.values()) {
+            match = item.text.indexOf(term) >= 0;
+            count += match;
+            item.parent.attr('hidden', !match);
+        }
+
+        if (count === 1) {
+            // TODO: anchor + expand
+        }
     }
 })(window, document, jQuery);
