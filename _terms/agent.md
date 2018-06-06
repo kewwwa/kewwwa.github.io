@@ -1,6 +1,6 @@
 ---
 layout: term
-title: 'Agent: Joueur Ingress'
+title: 'Agent'
 name: agent
 description: "Terme utilisé pour désigner les joueurs d’Ingress."
 ---

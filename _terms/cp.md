@@ -1,6 +1,6 @@
 ---
 layout: term
 title: 'CP: Checkpoint'
-name: checkpoint
+name: cp
 description: "Heure à laquelle sont mesurés les scores de MU des deux équipes (un toutes les 5h)."
 ---

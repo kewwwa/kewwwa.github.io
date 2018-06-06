@@ -1,6 +1,6 @@
 ---
 layout: term
-title: 'Capsule (Caps)'
+title: 'Capsule (ou Caps)'
 name: capsule
 description: "Item permettant de stocker d'autres items."
 ---
