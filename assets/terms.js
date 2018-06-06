@@ -15,6 +15,8 @@
         searchInput = $('#searchInput');
         searchInput.on('keyup', searchInputKeyUp);
 
+        window.addEventListener("hashchange", showMatchingHash, false);
+
         showMatchingHash();
     }
 
