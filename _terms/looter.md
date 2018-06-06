@@ -2,5 +2,5 @@
 layout: term
 title: 'Looter'
 name: looter
-description: "voir Loot. Assimilable à Hacker"
+description: "voir <a href=\"#loot\">Loot</a>. Assimilable à Hacker"
 ---

@@ -2,5 +2,5 @@
 layout: term
 title: 'Bag'
 name: bag
-description: "Voir <a href=\"#TBag\">TBag</a>."
+description: "Voir <a href=\"#tbag\">TBag</a>."
 ---
