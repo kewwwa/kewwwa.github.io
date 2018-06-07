@@ -4,7 +4,7 @@ title: Lexique
 ---
 <h1>Lexique</h1>
 
-<input id="searchInput" type="text" role="search">
+<input id="searchInput" type="text" role="search" placeholder="Rechercher...">
 
 <ul class="accordion" id="termList">
 

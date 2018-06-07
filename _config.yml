@@ -24,7 +24,7 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.com
 #twitter_username: jekyllrb
 github_username:  kewwwa
 github:
-  repository_url: https://github.com/kewwwa
+  repository_url: https://github.com/kewwwa/kewwwa.github.io
 lang: fr-FR
 
 # Build settings

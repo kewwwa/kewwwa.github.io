@@ -1,6 +1,6 @@
 ---
 layout: term
-title: 'Feu de camp ou Pot de fleurs'
+title: 'Feu de camp'
 name: feu-de-camp
-description: "désigne un portail dont tous les résonateurs sont très proches du centre du portail, faisant penser à un feu de camp ou à un pot de fleur"
+description: "Désigne un portail dont tous les résonateurs sont très proches du centre du portail, faisant penser à un feu de camp ou à un pot de fleurs."
 ---
