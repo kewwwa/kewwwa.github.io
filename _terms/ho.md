@@ -2,5 +2,5 @@
 layout: term
 title: 'HO: HangOut'
 name: ho
-description: "système de messagerie instantanée permettant aux joueurs de communiquer entre-eux => peu utilisé par les ENL, voir plutôt <a href=\"#tg\">TG</a>."
+description: "Système de messagerie instantanée utilisée par des joueurs pour communiquer entre-eux. Peu utilisé par les ENL, voir plutôt <a href=\"#tg\">TG</a>."
 ---
