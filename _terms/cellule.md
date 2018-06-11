@@ -2,5 +2,5 @@
 layout: term
 title: 'Cellule'
 name: cellule
-description: "zone géographique délimitée de la carte, sur Nantes on est dans J02"
+description: "Zone géographique délimitée de la carte. Exemple : Nantes est dans la cellule NR01-JULIET-02 (J02)"
 ---
