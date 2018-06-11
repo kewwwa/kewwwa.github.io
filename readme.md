@@ -26,3 +26,5 @@ Une fois vos créations/modifications apportées, elles seront présentes sur vo
 Il s'agit en faite d'un [clone (fork)](https://help.github.com/articles/github-glossary/#fork "Fork") que vous avez modifié.
 Pour intégrer vos modifications, il faut créer une [demande d'intégration (Pull Request)](https://help.github.com/articles/github-glossary/#pull-request "Pull Request").
 En théorie, il suffit de suivre les boutons verts. Si dans la pratique c'est plus compliqué, n'hésitez pas à me contacter sur TG.
+
+Coucou Maman ! 
