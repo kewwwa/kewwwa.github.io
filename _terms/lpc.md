@@ -2,5 +2,5 @@
 layout: term
 title: 'LPC: Lawson Power Cube'
 name: lpc
-description: "Power cube améliorer rechargent automatiquement votre réserve d'XM. Sa valeur est de 4 fois votre réserve d'XM."
+description: "<a href=\"#pc\">PowerCube</a> amélioré, réserve d'XM équivalente à 4 fois la capacité de votre barre d'<a href=\"#xm\">XM</a>."
 ---
