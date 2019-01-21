@@ -37,6 +37,8 @@ plugins:
 collections:
   terms:
     output: true
+  cells:
+    output: true
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list

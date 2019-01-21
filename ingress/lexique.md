@@ -22,4 +22,7 @@ title: Lexique
 {% endfor %}
 </ul>
 
+<p>Vous ne trouvez pas ce que vous cherchez ?</p>
+<p>Il s'agit peut être d'un terme spécifique à votre <a href="cellules">cellule</a></p>
+
 <script type="text/javascript" src="/assets/terms.js"></script>

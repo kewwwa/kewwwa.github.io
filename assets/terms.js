@@ -5,7 +5,9 @@
         searchInputDelay = 500,
         searchInputTimeout;
 
-    init();
+    return {
+        init: init
+    };
 
     function init() {
         container = $('#termList');
