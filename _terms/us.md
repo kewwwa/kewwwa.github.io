@@ -2,5 +2,5 @@
 layout: term
 title: 'US: Ultra Strike (ou USx selon le niveau)'
 name: us
-description: "Arme spéciale qui permet de détruire un résonateur en un seul coup."
+description: "'Frappe ultra': arme à puissance concentrée, pour détruire des <a href=\"#mod\">mods</a> ou un résonateur ciblé."
 ---

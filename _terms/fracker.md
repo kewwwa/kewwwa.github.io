@@ -2,5 +2,5 @@
 layout: term
 title: 'Fracker'
 name: fracker
-description: "Power up du store qui permet de doubler temporairement les items hackés sur un portail."
+description: "'Fissurateur': objet du magasin qui permet de doubler temporairement les objets hackés sur un portail."
 ---

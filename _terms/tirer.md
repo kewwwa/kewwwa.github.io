@@ -2,5 +2,5 @@
 layout: term
 title: 'Tirer'
 name: tirer
-description: "Créer un lien entre deux portails"
+description: "Tirer un <a href=\"#link\">lien</a> entre deux portails."
 ---
