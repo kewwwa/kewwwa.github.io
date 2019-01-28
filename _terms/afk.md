@@ -2,5 +2,5 @@
 layout: term
 title: 'AFK'
 name: afk
-description: "Absent (Away from keyboard)"
+description: "'Away from keyboard': absent"
 ---
