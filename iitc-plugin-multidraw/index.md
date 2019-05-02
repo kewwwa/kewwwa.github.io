@@ -9,7 +9,7 @@ title: IITC Multi Draw plugin
     </li>
     <li>
         <a href="https://static.iitc.me/build/release/plugins/draw-tools.user.js">Installer le plugin Draw tools</a>
-    </li
+    </li>
     <li>
         <a href="https://kewwwa.github.io/iitc-plugin-multidraw/plugins/multi-draw.user.js">Installer le plugin Multi draw</a>
     </li>
@@ -39,7 +39,7 @@ title: IITC Multi Draw plugin
     <li>
         <p>Cliquer sur "Auto" pour activer/désactiver l'ajout automatique au plan à la sélection d'un portail</p>
         <img src="img/autoPortal.png" />
-    </li
+    </li>
     <li>
         <p>Cliquer sur "A" ou "B" pour modifier la base.</p>
         <img src="img/movePortal.png" />
