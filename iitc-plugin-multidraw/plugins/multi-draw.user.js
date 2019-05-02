@@ -2,11 +2,11 @@
 // @id             iitc-plugin-multidraw@kewwwa
 // @name           IITC plugin: Multi draw
 // @category       Layer
-// @version        0.1.20190502.103407
+// @version        0.1.20190502.143832
 // @namespace      https://github.com/kewwwa/iitc-plugin-multidraw
 // @updateURL      https://kewwwa.github.io/iitc-plugin-multidraw/plugins/multi-draw.meta.js
 // @downloadURL    https://kewwwa.github.io/iitc-plugin-multidraw/plugins/multi-draw.user.js
-// @description    [kewwwa-2019-05-02-103407] Draw multiple links
+// @description    [kewwwa-2019-05-02-143832] Draw multiple links
 // @include        https://*.ingress.com/intel*
 // @include        http://*.ingress.com/intel*
 // @match          https://*.ingress.com/intel*
@@ -26,7 +26,7 @@ if(typeof window.plugin !== 'function') window.plugin = function() {};
 //PLUGIN AUTHORS: writing a plugin outside of the IITC build environment? if so, delete these lines!!
 //(leaving them in place might break the 'About IITC' page or break update checks)
 plugin_info.buildName = 'kewwwa';
-plugin_info.dateTimeVersion = '20190502.103407';
+plugin_info.dateTimeVersion = '20190502.143832';
 plugin_info.pluginId = 'multi-draw';
 //END PLUGIN AUTHORS NOTE
 
@@ -36,7 +36,9 @@ plugin_info.pluginId = 'multi-draw';
 var setup = (function (window, document, undefined) {
   'use strict';
 
-  var plugin, actions, isAutoMode, portalSelectionPending, firstPortal, secondPortal,
+  var plugin, drawTools,
+    actions, isAutoMode, portalSelectionPending,
+    firstPortal, secondPortal,
     firstMarker, secondMarker,
     clearLink, firstPortalLink, secondPortalLink,
     otherPortalLink, autoModeLink,
@@ -59,10 +61,13 @@ var setup = (function (window, document, undefined) {
     };
 
   plugin = function () { };
-  if (typeof window.plugin !== 'function') window.plugin = function () { };
-  window.plugin.multidraw = plugin;
+  if (typeof window.plugin.multidraw === 'function') {
+    console.warn('Multi draw: already there');
+    return plugin;
+  }
 
-  return setup;
+  window.plugin.multidraw = plugin;
+  return init;
 
   function toggleMenu() {
     if (actions.classList.contains(classList.hidden)) {
@@ -210,7 +215,7 @@ var setup = (function (window, document, undefined) {
 
   function drawMarker(portal, color, existingMarker) {
     var options = {
-      icon: window.plugin.drawTools.getMarkerIcon(color),
+      icon: drawTools.getMarkerIcon(color),
       zIndexOffset: 2000
     };
 
@@ -248,7 +253,7 @@ var setup = (function (window, document, undefined) {
 
     if (!existingLine) {
       window.map.fire('draw:created', {
-        layer: L.geodesicPolyline(latlngs, window.plugin.drawTools.lineOptions),
+        layer: L.geodesicPolyline(latlngs, drawTools.lineOptions),
         layerType: 'polyline'
       });
     }
@@ -347,7 +352,10 @@ var setup = (function (window, document, undefined) {
     }
   }
 
-  function setup() {
+  function init() {
+    if (plugin.isInit) {
+      console.warn('Multi draw: already setup');
+    }
     var parent, control, section, toolbar, button, autoModeLi, clearLi,
       firstPortalLi, secondPortalLi, otherPortalLi, accessKeyButton;
 
@@ -358,7 +366,8 @@ var setup = (function (window, document, undefined) {
       });
     }
 
-    groups.links = window.plugin.drawTools.drawnItems;
+    drawTools = window.plugin.drawTools;
+    groups.links = drawTools.drawnItems;
     groups.markers = new L.FeatureGroup();
     window.addLayerGroup('Multi draw', groups.markers, true);
 
@@ -444,6 +453,8 @@ var setup = (function (window, document, undefined) {
 
     parent = $('.leaflet-top.leaflet-left', window.map.getContainer());
     parent.append(control);
+
+    plugin.isInit = true;
   }
 })(window, document);
 // PLUGIN END //////////////////////////////////////////////////////////
