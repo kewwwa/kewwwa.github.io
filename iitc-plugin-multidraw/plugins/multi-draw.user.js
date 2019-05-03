@@ -2,11 +2,11 @@
 // @id             iitc-plugin-multidraw@kewwwa
 // @name           IITC plugin: Multi draw
 // @category       Layer
-// @version        0.1.20190502.143832
+// @version        0.1.20190503.151325
 // @namespace      https://github.com/kewwwa/iitc-plugin-multidraw
 // @updateURL      https://kewwwa.github.io/iitc-plugin-multidraw/plugins/multi-draw.meta.js
 // @downloadURL    https://kewwwa.github.io/iitc-plugin-multidraw/plugins/multi-draw.user.js
-// @description    [kewwwa-2019-05-02-143832] Draw multiple links
+// @description    [kewwwa-2019-05-03-151325] Draw multiple links
 // @include        https://*.ingress.com/intel*
 // @include        http://*.ingress.com/intel*
 // @match          https://*.ingress.com/intel*
@@ -26,7 +26,7 @@ if(typeof window.plugin !== 'function') window.plugin = function() {};
 //PLUGIN AUTHORS: writing a plugin outside of the IITC build environment? if so, delete these lines!!
 //(leaving them in place might break the 'About IITC' page or break update checks)
 plugin_info.buildName = 'kewwwa';
-plugin_info.dateTimeVersion = '20190502.143832';
+plugin_info.dateTimeVersion = '20190503.151325';
 plugin_info.pluginId = 'multi-draw';
 //END PLUGIN AUTHORS NOTE
 
@@ -356,7 +356,7 @@ var setup = (function (window, document, undefined) {
     if (plugin.isInit) {
       console.warn('Multi draw: already setup');
     }
-    var parent, control, section, toolbar, button, autoModeLi, clearLi,
+    var control, section, toolbar, button, autoModeLi, clearLi,
       firstPortalLi, secondPortalLi, otherPortalLi, accessKeyButton;
 
     if (!window.plugin.drawTools) {
@@ -375,7 +375,7 @@ var setup = (function (window, document, undefined) {
 
     $('<style>')
       .prop('type', 'text/css')
-      .html('.leaflet-control-multidraw .leaflet-draw-actions {\n    display: block;\n}\n\n.leaflet-control-multidraw .hidden {\n    display: none;\n}\n\n.leaflet-control-multidraw .leaflet-draw-actions a.active {\n    background-color: #008902;\n}\n\n.leaflet-control-multidraw a.leaflet-multidraw-edit-edit {\n    background-image: url(\'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAIAAAC0Ujn1AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjEuNv1OCegAAAIlSURBVEhLvVWvswFRGN1kBEEQmBEM/gAzBNEYwRhRFN4YURQEM6IgCKIgmCEIgiAKgmiMIAqCIAiCIHjnvfvN3d37Y9/15nknmD13d889e3zfd63n2/Dv0o/HIxqN3u934hI8bnGopTebTTabJSLhdDrFYrHL5UJcA7V0t9tttVpEJBQKhXa7TUQPtXSxWFwul0Tc6Pf7mUwGiRHXQyGN14LB4O12I+7Afr8PhUKHw4G4JxTSuqCxZSqVGgwGxH+CQloXdLPZLJfLRAygkFYGvVqtwuHw+XwmbgBRWhk0KKptNpsRN4MorQz64xtEjCFKy0HDLCwrC8YborQQNBoPEa/Xa+JueLe7S1oOGjvp2hJViF2v1ytxCS5pIWi8jEKWG+94POZyOdzabre0pIJL2hk0Wg5fIDce9sN6p9ORtxTgkuZB4zUMCowLts5gaJbDlnYGjcGG8cbWGczNctjSPGhcYAahNtj6q2Y5bGkWtNB4vzDLYUuzoOv1erVaBTU0i4+bz+eYXHg4EAg4C5ekWdCTyQSWUaoeZvEyOqjX61UqFZyfeAye8ORisRBqnKSRbzqdRsTT6VQ2ixNgNBo1Gg2s+/1+/OJ6PB57nwkkjaATiUQ+n2dmMTzhAnUCR1iBO3hELcKvyVnOQNLxeNzn80UikVKplEwmkRq8419Fji/NaCe+pHHsW5YFd7VabTgcvlpkOpDr3W7HLv4QJP0OvE36+fwEa9FfUxJlSk0AAAAASUVORK5CYII=\');\n}')
+      .html('.leaflet-control-multidraw .leaflet-draw-actions {\n    display: block;\n}\n\n.leaflet-control-multidraw .hidden {\n    display: none;\n}\n\n.leaflet-control-multidraw .leaflet-draw-actions a {\n    width: inherit;\n}\n\n.leaflet-control-multidraw .leaflet-draw-actions a.active {\n    background-color: #008902;\n}\n\n.leaflet-control-multidraw a.leaflet-multidraw-edit-edit {\n    background-image: url(\'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAIAAAC0Ujn1AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjEuNv1OCegAAAIlSURBVEhLvVWvswFRGN1kBEEQmBEM/gAzBNEYwRhRFN4YURQEM6IgCKIgmCEIgiAKgmiMIAqCIAiCIHjnvfvN3d37Y9/15nknmD13d889e3zfd63n2/Dv0o/HIxqN3u934hI8bnGopTebTTabJSLhdDrFYrHL5UJcA7V0t9tttVpEJBQKhXa7TUQPtXSxWFwul0Tc6Pf7mUwGiRHXQyGN14LB4O12I+7Afr8PhUKHw4G4JxTSuqCxZSqVGgwGxH+CQloXdLPZLJfLRAygkFYGvVqtwuHw+XwmbgBRWhk0KKptNpsRN4MorQz64xtEjCFKy0HDLCwrC8YborQQNBoPEa/Xa+JueLe7S1oOGjvp2hJViF2v1ytxCS5pIWi8jEKWG+94POZyOdzabre0pIJL2hk0Wg5fIDce9sN6p9ORtxTgkuZB4zUMCowLts5gaJbDlnYGjcGG8cbWGczNctjSPGhcYAahNtj6q2Y5bGkWtNB4vzDLYUuzoOv1erVaBTU0i4+bz+eYXHg4EAg4C5ekWdCTyQSWUaoeZvEyOqjX61UqFZyfeAye8ORisRBqnKSRbzqdRsTT6VQ2ixNgNBo1Gg2s+/1+/OJ6PB57nwkkjaATiUQ+n2dmMTzhAnUCR1iBO3hELcKvyVnOQNLxeNzn80UikVKplEwmkRq8419Fji/NaCe+pHHsW5YFd7VabTgcvlpkOpDr3W7HLv4QJP0OvE36+fwEa9FfUxJlSk0AAAAASUVORK5CYII=\');\n}')
       .appendTo('head');
 
     button = document.createElement('a');
@@ -384,7 +384,7 @@ var setup = (function (window, document, undefined) {
     button.title = 'Draw multi links [z]';
 
     toolbar = document.createElement('div');
-    toolbar.className = 'leaflet-draw-toolbar leaflet-bar';
+    toolbar.className = 'leaflet-bar';
     toolbar.appendChild(button);
 
     clearLink = document.createElement('a');
@@ -451,8 +451,17 @@ var setup = (function (window, document, undefined) {
       'leaflet-control-multidraw leaflet-draw leaflet-control';
     control.appendChild(section);
 
-    parent = $('.leaflet-top.leaflet-left', window.map.getContainer());
-    parent.append(control);
+    L.Control.Multidraw = L.Control.extend({
+      onAdd: function (map) {
+        console.debug('Control added');
+        return control;
+      },
+      onRemove: function (map) {
+        console.debug('Control removed');
+      }
+    });
+
+    map.addControl(new L.Control.Multidraw({ position: 'topleft' }));
 
     plugin.isInit = true;
   }
