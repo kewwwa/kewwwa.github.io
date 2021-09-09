@@ -1,9 +1,17 @@
-(function (document) {
-    var key = '323925712C8B49E48C00EBA72486203D';
+(function (window, document) {
+    const key = '323925712C8B49E48C00EBA72486203D'
+    elementsId = [
+        'options',
+        'optionsContainer',
+        'details',
+        'print'
+    ],
+        elements = {};
     init();
 
     function init() {
         try {
+            initElements();
             initDetailsToggle();
             requestData();
         } catch (error) {
@@ -11,11 +19,61 @@
         }
     }
 
+    function initElements() {
+        let index, id;
+        for (index = 0; index < elementsId.length; index++) {
+            id = elementsId[index];
+            elements[id] = document.getElementById(id);
+        }
+
+        elements.options.addEventListener('click', toggleOptions, false);
+        elements.details.addEventListener('click', toggleAllDetails, false);
+        elements.print.addEventListener('click', printDocument, false);
+    }
+
+    function toggleAllDetails() {
+        const elements = document.querySelectorAll('details');
+        let index = -1, element, hasClosed = false;
+        while (!hasClosed && ++index < elements.length) {
+            element = elements[index];
+            hasClosed = !element.attributes['open'];
+        }
+
+        if (hasClosed) {
+            while (index < elements.length) {
+                element = elements[index];
+                if (!element.attributes['open']) {
+                    element.setAttribute('open', '');
+                }
+
+                index++
+            }
+        } else {
+            index = 0;
+            while (index < elements.length) {
+                element = elements[index];
+                element.removeAttribute('open');
+                index++
+            }
+        }
+    }
+
+    function toggleOptions(event) {
+        event.preventDefault && event.preventDefault();
+        elements.optionsContainer.classList.toggle('hidden');
+    }
+
+    function printDocument(event) {
+        event.preventDefault && event.preventDefault();
+        window.print();
+        elements.optionsContainer.classList.toggle('hidden');
+    }
+
     function initDetailsToggle() {
-        var detailsElement = document.createElement('details');
+        const detailsElement = document.createElement('details');
         if (detailsElement.open !== false && detailsElement.open !== true) {
-            var details = document.getElementsByTagName('details');
-            var index;
+            const details = document.querySelectorAll('details');
+            let index;
             for (index = 0; index < details.length; index++) {
                 details[index].addEventListener('click', toggleDetails, false);
             }
@@ -23,7 +81,7 @@
     }
 
     function toggleDetails(event) {
-        var openAttribute = event.currentTarget.attributes['open'];
+        const openAttribute = event.currentTarget.attributes['open'];
         if (openAttribute) {
             event.currentTarget.removeAttribute('open');
         } else {
@@ -32,7 +90,7 @@
     }
 
     function requestData() {
-        var xhttp = new XMLHttpRequest();
+        const xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = dataReceived;
         xhttp.open('GET', '/data.json', true);
         xhttp.send();
@@ -40,13 +98,13 @@
 
     function dataReceived() {
         if (this.readyState == 4 && this.status == 200) {
-            var data = JSON.parse(this.responseText);
+            const data = JSON.parse(this.responseText);
             displayData(data);
         }
     }
 
     function displayData(data) {
-        var index, item, element;
+        let index, item, element;
 
         for (index = 0; index < data.length; index++) {
             item = data[index];
@@ -61,27 +119,26 @@
         }
     }
 
-    function encryptCodes(content, passcode) {
-        var calAscii, result = '';
-
-        for (var i = 0; i < content.length; i++) {
-            calAscii = (content.charCodeAt(i) + passcode.charCodeAt(i % passcode.length));
-            result += String.fromCharCode(calAscii);
-        }
-
-        return btoa(result);
-    }
-
     function decryptCodes(content, passcode) {
-        var calAscii, result = '';
-        var data = atob(content);
+        const data = atob(content);
+        let index, calAscii, result = '';
 
-        for (var i = 0; i < data.length; i++) {
-            calAscii = (data.charCodeAt(i) - passcode.charCodeAt(i % passcode.length));
+        for (index = 0; index < data.length; index++) {
+            calAscii = (data.charCodeAt(index) - passcode.charCodeAt(index % passcode.length));
             result += String.fromCharCode(calAscii);
         }
 
         return result;
     }
 
-})(document);
+    function encryptCodes(content, passcode) {
+        let index, calAscii, result = '';
+        for (index = 0; index < content.length; index++) {
+            calAscii = (content.charCodeAt(index) + passcode.charCodeAt(index % passcode.length));
+            result += String.fromCharCode(calAscii);
+        }
+
+        return btoa(result);
+    }
+
+})(window, document);

@@ -5,7 +5,8 @@ body {
 }
 
 body,
-body>footer {
+body>footer,
+body>nav {
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
@@ -26,13 +27,35 @@ h3 {
 body>footer {
     position: fixed;
     bottom: 0;
-    background-color: #FFF;
-    padding: 10px;
     right: 0;
     left: 0;
-    text-align: right;
+    padding: 10px;
     box-sizing: border-box;
+    background-color: #FFF;
     border-top: 1px solid #E14A00;
+    display: flex;
+    justify-content: end;
+}
+
+body>footer>a,
+body>footer>aside>a {
+    padding: 0 5px;
+}
+
+body>footer>aside {
+    flex: 1 1 auto;
+}
+
+body>nav {
+    position: fixed;
+    bottom: 38px;
+    background-color: #FFF;
+    border: 1px solid #E14A00;
+    padding: 10px;
+}
+
+body>nav>a {
+    padding: 0 5px;
 }
 
 header>div,
@@ -45,9 +68,13 @@ main>div {
 }
 
 a,
-main>div summary {
-    cursor: pointer;
+summary {
     color: #E14A00;
+}
+
+a,
+details>summary {
+    cursor: pointer;
     text-decoration: underline;
 }
 
@@ -76,7 +103,7 @@ article>div>header {
 }
 
 article>div>header>time {
-    width: 45%;
+    width: 50%;
 }
 
 h4 {
@@ -99,18 +126,33 @@ details[open]>summary~* {
     display: inherit;
 }
 
+.hidden {
+    display: none;
+}
+
 @media print {
-    hgroup {
-        color: #000;
+
+    header>div,
+    main>div {
+        background: none;
     }
 
     a,
-    main>div summary {
+    main summary {
         color: #000;
         text-decoration: none;
     }
 
+    details>summary~* {
+        display: inherit;
+    }
+
     body>footer {
         position: static;
+    }
+
+    body>nav,
+    body>footer>aside {
+        display: none;
     }
 }
