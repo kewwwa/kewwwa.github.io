@@ -4,7 +4,8 @@
         'options',
         'optionsContainer',
         'details',
-        'print'
+        'print',
+        'today'
     ],
         elements = {};
     init();
@@ -29,6 +30,10 @@
         elements.options.addEventListener('click', toggleOptions, false);
         elements.details.addEventListener('click', toggleAllDetails, false);
         elements.print.addEventListener('click', printDocument, false);
+        if (elements.today) {
+            const now = new Date();
+            elements.today.textContent = `(au ${('0' + now.getDate()).slice(-2)}/${('0' + (now.getMonth() + 1)).slice(-2)}/${now.getFullYear()})`;
+        }
     }
 
     function toggleAllDetails() {
