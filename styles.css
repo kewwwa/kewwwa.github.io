@@ -5,15 +5,16 @@ body {
 }
 
 body,
-footer {
+body>footer {
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
 }
 
 hgroup {
-    background-color: #FF5411;
-    padding: 20px;
+    padding: 20px 20px 20px 30px;
+    color: #FFF;
+    background-color: #E14A00;
 }
 
 h1,
@@ -22,17 +23,20 @@ h3 {
     font-family: Arial;
 }
 
-footer {
+body>footer {
     position: fixed;
     bottom: 0;
     background-color: #FFF;
     padding: 10px;
     right: 0;
     left: 0;
+    text-align: right;
+    box-sizing: border-box;
+    border-top: 1px solid #E14A00;
 }
 
-header>section,
-main>section {
+header>div,
+main>div {
     border-bottom: 2px solid #E14A00;
     border-right: 2px solid #E14A00;
     padding: 10px;
@@ -41,37 +45,48 @@ main>section {
 }
 
 a,
-main>section summary {
+main>div summary {
     cursor: pointer;
     color: #E14A00;
-    text-decoration: underline;
 }
 
 a:hover,
-main>section summary:hover {
-    text-decoration: none;
+main>div summary:hover {
+    text-decoration: underline;
 }
 
-dl {
+article {
+    margin: 20px 0;
+}
+
+article>div {
     display: flex;
     flex-wrap: wrap;
 }
 
-dt {
-    flex-basis: 25%;
+article>div>details {
+    width: 65%;
 }
 
-dd {
-    flex-basis: 75%;
+article>div>header {
+    display: flex;
+    width: 35%;
+    padding-bottom: 10px;
+}
+
+article>div>header>time {
+    width: 45%;
+}
+
+h4 {
     margin: 0;
-    font-weight: bold;
 }
 
 @media (max-width:600px) {
 
-    dt,
-    dd {
-        flex-basis: 100%;
+    article>div>header,
+    article>div>details {
+        width: 100%;
     }
 }
 
@@ -81,4 +96,21 @@ details>summary~* {
 
 details[open]>summary~* {
     display: inherit;
+}
+
+@media print {
+    hgroup {
+        color: #000;
+        background-color: transparent;
+    }
+
+    a,
+    main>div summary {
+        color: #000;
+        text-decoration: none;
+    }
+
+    body>footer {
+        position: static;
+    }
 }

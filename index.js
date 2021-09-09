@@ -1,5 +1,5 @@
 (function (document) {
-    const key = '323925712C8B49E48C00EBA72486203D';
+    var key = '323925712C8B49E48C00EBA72486203D';
     init();
 
     function init() {
