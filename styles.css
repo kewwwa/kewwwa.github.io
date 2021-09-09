@@ -48,11 +48,12 @@ a,
 main>div summary {
     cursor: pointer;
     color: #E14A00;
+    text-decoration: underline;
 }
 
 a:hover,
 main>div summary:hover {
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 article {
@@ -101,7 +102,6 @@ details[open]>summary~* {
 @media print {
     hgroup {
         color: #000;
-        background-color: transparent;
     }
 
     a,
