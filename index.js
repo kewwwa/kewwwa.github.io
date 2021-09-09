@@ -5,7 +5,8 @@
         'optionsContainer',
         'details',
         'print',
-        'today'
+        'today',
+        'hideRequests'
     ],
         elements = {};
     init();
@@ -30,13 +31,16 @@
         elements.options.addEventListener('click', toggleOptions, false);
         elements.details.addEventListener('click', toggleAllDetails, false);
         elements.print.addEventListener('click', printDocument, false);
+        elements.hideRequests.addEventListener('click', hideRequests, false);
         if (elements.today) {
             const now = new Date();
             elements.today.textContent = `(au ${('0' + now.getDate()).slice(-2)}/${('0' + (now.getMonth() + 1)).slice(-2)}/${now.getFullYear()})`;
         }
     }
 
-    function toggleAllDetails() {
+    function toggleAllDetails(event) {
+        event.preventDefault && event.preventDefault();
+
         const elements = document.querySelectorAll('details');
         let index = -1, element, hasClosed = false;
         while (!hasClosed && ++index < elements.length) {
@@ -72,6 +76,11 @@
         event.preventDefault && event.preventDefault();
         window.print();
         elements.optionsContainer.classList.toggle('hidden');
+    }
+
+    function hideRequests(event) {
+        event.preventDefault && event.preventDefault();
+        elements.hideRequests.parentElement.parentElement.remove();
     }
 
     function initDetailsToggle() {
