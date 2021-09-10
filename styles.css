@@ -61,7 +61,7 @@ body>nav>a {
 }
 
 header>div,
-main>div {
+main>section>div {
     position: relative;
     border-bottom: 2px solid #E14A00;
     border-right: 2px solid #E14A00;
@@ -71,7 +71,7 @@ main>div {
 }
 
 header>div>aside,
-main>div>aside {
+main>section>div>aside {
     position: absolute;
     top: 10px;
     right: 10px;
@@ -89,7 +89,7 @@ details>summary {
 }
 
 a:hover,
-main>div summary:hover {
+main>section>div summary:hover {
     text-decoration: none;
 }
 
@@ -154,7 +154,7 @@ details[open]>summary~* {
     }
 
     header>div,
-    main>div {
+    main>section>div {
         background: none;
     }
 
@@ -171,6 +171,11 @@ details[open]>summary~* {
     body>footer {
         position: static;
         border: none;
+    }
+
+    main,
+    .break {
+        page-break-inside: avoid;
     }
 
     .noprint {
