@@ -36,13 +36,16 @@ body>footer {
     display: flex;
 }
 
-body>footer>a,
-body>footer>aside>a {
+body>footer a {
     padding: 0 5px;
 }
 
 body>footer>aside {
     flex: 1 1 auto;
+}
+
+body>footer>aside:last-child {
+    flex: 0 1 auto;
 }
 
 body>nav {
@@ -137,11 +140,18 @@ details[open]>summary~* {
     display: inherit;
 }
 
-.hidden {
+.hidden,
+.print {
     display: none;
 }
 
 @media print {
+
+    hgroup {
+        color: #000;
+        background: none;
+        border: 2px solid #E14A00;
+    }
 
     header>div,
     main>div {
@@ -160,12 +170,14 @@ details[open]>summary~* {
 
     body>footer {
         position: static;
+        border: none;
     }
 
-    header>div>aside,
-    main>div>aside,
-    body>nav,
-    body>footer>aside {
+    .noprint {
         display: none;
+    }
+
+    .print {
+        display: inherit;
     }
 }

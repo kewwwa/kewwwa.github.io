@@ -1,8 +1,6 @@
 (function (window, document) {
     const key = '323925712C8B49E48C00EBA72486203D'
     elementsId = [
-        'options',
-        'optionsContainer',
         'details',
         'print',
         'today',
@@ -28,7 +26,6 @@
             elements[id] = document.getElementById(id);
         }
 
-        elements.options.addEventListener('click', toggleOptions, false);
         elements.details.addEventListener('click', toggleAllDetails, false);
         elements.print.addEventListener('click', printDocument, false);
         elements.hideRequests.addEventListener('click', hideRequests, false);
@@ -67,15 +64,9 @@
         }
     }
 
-    function toggleOptions(event) {
-        event.preventDefault && event.preventDefault();
-        elements.optionsContainer.classList.toggle('hidden');
-    }
-
     function printDocument(event) {
         event.preventDefault && event.preventDefault();
         window.print();
-        elements.optionsContainer.classList.toggle('hidden');
     }
 
     function hideRequests(event) {
