@@ -5,15 +5,16 @@ const { src, dest, series, parallel, watch } = require('gulp'),
     browserSync = require('browser-sync').create(),
     del = require('delete');
 
-exports.watch = watchFiles;
 exports.build = parallel(javascript, css, copy);
+exports.clean = clean;
+exports.watch = watchFiles;
 exports.default = series(clean, exports.build, exports.watch);
 
 const config = {
     dest: './docs',
     js: 'index.js',
     css: 'styles.scss',
-    copy: ['index.html', 'data.json'],
+    copy: ['index.html', 'data.json', 'CNAME'],
     del: './docs/**'
 };
 
