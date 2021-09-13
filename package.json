@@ -1,0 +1,25 @@
+{
+  "name": "kewwwa.github.io",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "start": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kewwwa/kewwwa.github.io.git"
+  },
+  "keywords": [],
+  "author": "kewwwa",
+  "license": "ISC",
+  "homepage": "https://diseur.net",
+  "devDependencies": {
+    "browser-sync": "^2.27.5",
+    "delete": "^1.1.0",
+    "gulp": "^4.0.2",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-scss": "^1.4.0",
+    "gulp-uglify": "^3.0.2"
+  }
+}
