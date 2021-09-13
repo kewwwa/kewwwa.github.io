@@ -109,16 +109,26 @@
     }
 
     function displayData(data) {
-        let index, item, element;
+        let index, item, elements, element, elementIndex;
 
         for (index = 0; index < data.length; index++) {
             item = data[index];
-            element = document.getElementById(item.id);
-            if (element) {
-                element.innerText = decryptCodes(item.text, key);
+            if (item.id) {
+                elements = [document.getElementById(item.id)];
+            } else if (item.class) {
+                elements = document.getElementsByClassName(item.class);
+            }
 
-                if (item.link) {
-                    element.href = decryptCodes(item.link, key);
+            if (elements.length > 0) {
+                for (elementIndex = 0; elementIndex < elements.length; elementIndex++) {
+                    element = elements[elementIndex];
+                    if (element) {
+                        element.innerText = decryptCodes(item.text, key);
+
+                        if (item.link) {
+                            element.href = decryptCodes(item.link, key);
+                        }
+                    }
                 }
             }
         }

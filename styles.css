@@ -5,8 +5,7 @@ body {
 }
 
 body,
-body>footer,
-body>nav {
+body>footer {
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
@@ -36,7 +35,8 @@ body>footer {
     display: flex;
 }
 
-body>footer a {
+body>footer a,
+header>nav a {
     padding: 0 5px;
 }
 
@@ -48,16 +48,10 @@ body>footer>aside:last-child {
     flex: 0 1 auto;
 }
 
-body>nav {
-    position: fixed;
-    bottom: 38px;
-    background-color: #FFF;
-    border: 1px solid #E14A00;
-    padding: 10px;
-}
-
-body>nav>a {
-    padding: 0 5px;
+header>nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 10px 0px 10px;
 }
 
 header>div,
@@ -113,7 +107,7 @@ article>div>header {
 }
 
 article>div>header>time {
-    width: 50%;
+    width: 55%;
 }
 
 h4 {
@@ -173,9 +167,12 @@ details[open]>summary~* {
         border: none;
     }
 
-    main,
-    .break {
+    main {
         page-break-inside: avoid;
+    }
+
+    .break {
+        page-break-before: always;
     }
 
     .noprint {
