@@ -1,5 +1,7 @@
 const { src, dest, series, parallel, watch } = require('gulp'),
+    { pipeline } = require('stream'),
     uglify = require('gulp-uglify'),
+    sourcemaps = require('gulp-sourcemaps'),
     scss = require('gulp-scss'),
     cleanCSS = require('gulp-clean-css'),
     browserSync = require('browser-sync').create(),
@@ -14,8 +16,8 @@ const config = {
     dest: './docs',
     js: 'index.js',
     css: 'styles.scss',
-    copy: ['index.html', 'data.json', 'CNAME'],
-    del: './docs/**'
+    copy: ['index.html', 'data.json', 'CNAME', '*.pdf'],
+    del: './docs/**/*'
 };
 
 function watchFiles() {
@@ -29,22 +31,33 @@ function watchFiles() {
     watch(config.copy, copy).on('change', browserSync.reload);
 }
 
-function javascript() {
-    return src(config.js)
-        .pipe(uglify())
-        .pipe(dest(config.dest));
+function javascript(cb) {
+    return pipeline(
+        src(config.js),
+        sourcemaps.init(),
+        uglify(),
+        sourcemaps.write('.'),
+        dest(config.dest),
+        cb
+    );
 }
 
-function css() {
-    return src(config.css)
-        .pipe(scss())
-        .pipe(cleanCSS())
-        .pipe(dest(config.dest));
+function css(cb) {
+    return pipeline(
+        src(config.css),
+        scss(),
+        cleanCSS(),
+        dest(config.dest),
+        cb
+    );
 }
 
-function copy() {
-    return src(config.copy)
-        .pipe(dest(config.dest));
+function copy(cb) {
+    return pipeline(
+        src(config.copy),
+        dest(config.dest),
+        cb
+    );
 }
 
 function clean(cb) {
