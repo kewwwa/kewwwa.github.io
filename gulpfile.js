@@ -1,5 +1,6 @@
 const { src, dest, series, parallel, watch } = require('gulp'),
     { pipeline } = require('stream'),
+    babel = require('gulp-babel'),
     uglify = require('gulp-uglify'),
     sourcemaps = require('gulp-sourcemaps'),
     scss = require('gulp-scss'),
@@ -35,6 +36,9 @@ function javascript(cb) {
     return pipeline(
         src(config.js),
         sourcemaps.init(),
+        babel({
+            presets: ['@babel/env']
+        }),
         uglify(),
         sourcemaps.write('.'),
         dest(config.dest),

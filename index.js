@@ -1,12 +1,13 @@
 (function (window, document) {
-    const key = '323925712C8B49E48C00EBA72486203D'
-    elementsId = [
-        'details',
-        'print',
-        'today',
-        'hideRequests'
-    ],
+    const key = '323925712C8B49E48C00EBA72486203D',
+        elementsId = [
+            'details',
+            'print',
+            'today',
+            'hideRequests'
+        ],
         elements = {};
+
     init();
 
     function init() {
