@@ -4,6 +4,9 @@
             'details',
             'print',
             'today',
+            'requestHeader',
+            'requestDetails',
+            'showRequests',
             'hideRequests'
         ],
         elements = {};
@@ -29,7 +32,8 @@
 
         elements.details.addEventListener('click', toggleAllDetails, false);
         elements.print.addEventListener('click', printDocument, false);
-        elements.hideRequests.addEventListener('click', hideRequests, false);
+        elements.showRequests.addEventListener('click', toggleRequests, false);
+        elements.hideRequests.addEventListener('click', toggleRequests, false);
         if (elements.today) {
             const now = new Date();
             elements.today.textContent = `(au ${('0' + now.getDate()).slice(-2)}/${('0' + (now.getMonth() + 1)).slice(-2)}/${now.getFullYear()})`;
@@ -70,9 +74,12 @@
         window.print();
     }
 
-    function hideRequests(event) {
+    function toggleRequests(event) {
         event.preventDefault && event.preventDefault();
-        elements.hideRequests.parentElement.parentElement.remove();
+        const hidden = elements.requestDetails.classList.toggle('hidden');
+        elements.requestHeader.classList.toggle('noprint', hidden);
+        elements.showRequests.classList.toggle('hidden', !hidden);
+        elements.hideRequests.classList.toggle('hidden', hidden);
     }
 
     function initDetailsToggle() {

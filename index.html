@@ -22,33 +22,34 @@
                 <a class="num" href="#tel"></a>
             </aside>
         </nav>
-        <div>
+        <div id="requestHeader" class="noprint">
             <h2>Vous avez une mission ?</h2>
-            <p>Dans l'idéal j'aimerais :
-            <ul>
-                <li>Dispo : dès aujourd'hui <span id="today"></span></li>
-                <li>TJM : 400€ HT</li>
-                <li>Environnement fonctionnel : je suis ouvert</li>
-                <li>Environnement technique :
-                    <ul>
-                        <li>J'aime partager mon expérience (.Net, Angular, etc.)</li>
-                        <li>Et faire des découvertes (ReactJS, NodeJS, Ruby, etc.) </li>
-                    </ul>
-                </li>
-                <li>Lieux :
-                    <ul>
-                        <li> Nord de Nantes : Saint Herblain, Orvault, La Chapelle sur Erdre, Carquefou, <i>etc.</i>
-                        </li>
-                        <li>
-                            Près de chez moi : Blain, Savenay, Nort sur Erdre, Nozay, <i>etc.</i>
-                        </li>
-                    </ul>
-                </li>
-                <li>Télétravail : c'est un plus, pas à temps plein.</li>
-            </ul>
-            </p>
+            <a id="showRequests" href="#show" class="noprint">Plus d'info</a>
+            <div id="requestDetails" class="hidden">
+                <ul>
+                    <li>Dispo : 2022-2023 <span id="today"></span></li>
+                    <li>TJM : 400€ HT</li>
+                    <li>Environnement fonctionnel : je suis ouvert</li>
+                    <li>Environnement technique :
+                        <ul>
+                            <li>J'aime partager mon expérience (.Net, Angular, etc.)</li>
+                            <li>Et faire des découvertes (ReactJS, NodeJS, Ruby, etc.) </li>
+                        </ul>
+                    </li>
+                    <li>Lieux :
+                        <ul>
+                            <li> Nord de Nantes : Saint Herblain, Orvault, La Chapelle sur Erdre, Carquefou, <i>etc.</i>
+                            </li>
+                            <li>
+                                Près de chez moi : Blain, Savenay, Nort sur Erdre, Nozay, <i>etc.</i>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>Télétravail : c'est un plus, pas à temps plein.</li>
+                </ul>
+            </div>
             <aside class="noprint">
-                <a id="hideRequests" href="#masquer">Masquer</a>
+                <a id="hideRequests" href="#hide" class="hidden">Masquer</a>
             </aside>
         </div>
 
