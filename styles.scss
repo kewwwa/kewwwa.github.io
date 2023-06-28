@@ -110,10 +110,19 @@ article {
             }
         }
 
-        details {
+        > details {
             width: 65%;
         }
+
+        article {
+            width: 100%;
+            margin: 0 0 10px 0;
+        }
     }
+}
+
+code {
+    clear: both;
 }
 
 @media (max-width:600px) {
